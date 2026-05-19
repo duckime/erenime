@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Download ERENIME for Desktop</title>
+  <!-- Import Geometric Inter & Space Mono Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #000000;
+      --accent: #e50914;
+      --text: #ffffff;
+      --text-muted: #a1a1aa;
+      --border: rgba(255, 255, 255, 0.08);
+      --glass: rgba(12, 12, 16, 0.82);
+      --radius: 16px;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --font-mono: 'Space Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 24px;
+      position: relative;
+    }
+
+    /* Ambient background refraction glow */
+    .ambient-glow {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(229, 9, 20, 0.15) 0%, transparent 70%);
+      filter: blur(80px);
+      z-index: 1;
+      pointer-events: none;
+      animation: pulseGlow 12s infinite alternate ease-in-out;
+    }
+
+    @keyframes pulseGlow {
+      0% { transform: translate(-50%, -50%) scale(0.95); opacity: 0.8; }
+      100% { transform: translate(-50%, -50%) scale(1.08); opacity: 1; }
+    }
+
+    /* Outer Wrapper Container */
+    .download-container {
+      width: 100%;
+      max-width: 800px;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* Glassmorphic Panel Layout */
+    .glass-card {
+      background: var(--glass);
+      backdrop-filter: blur(32px);
+      -webkit-backdrop-filter: blur(32px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 48px;
+      box-shadow: 0 40px 120px rgba(0, 0, 0, 0.95);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Bold Crimson Logo branding */
+    .brand-title {
+      font-size: 56px;
+      font-weight: 900;
+      color: var(--accent);
+      letter-spacing: -2px;
+      line-height: 1;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      font-family: var(--font-sans);
+    }
+
+    .brand-tagline {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .app-desc {
+      font-size: 16px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      max-width: 580px;
+      margin-bottom: 36px;
+    }
+
+    /* Premium Button Interactive Micro-animations */
+    .download-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #ffffff;
+      color: #000000;
+      border: none;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 16px 40px;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 10px 30px rgba(255, 255, 255, 0.05);
+    }
+
+    .download-btn:hover {
+      background: var(--accent);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 15px 40px rgba(229, 9, 20, 0.4);
+    }
+
+    .download-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .download-meta {
+      font-family: var(--font-mono);
+      font-size: 9px;
+      color: var(--text-muted);
+      margin-top: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    /* App Features Grid layout */
+    .features-section {
+      margin-top: 24px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      width: 100%;
+      text-align: left;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      border-radius: 12px;
+      padding: 24px;
+      transition: border-color 0.2s;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(255, 255, 255, 0.08);
+    }
+
+    .feature-icon {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    .feature-title {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: #ffffff;
+    }
+
+    .feature-text {
+      font-size: 12.5px;
+      line-height: 1.5;
+      color: var(--text-muted);
+    }
+
+    /* Setup timeline guide */
+    .setup-guide-card {
+      background: var(--glass);
+      backdrop-filter: blur(32px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 48px;
+    }
+
+    .guide-title {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .step-number {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+
+    .step-title {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .step-desc {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    /* Animations keys */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 640px) {
+      .features-section {
+        grid-template-columns: 1fr;
+      }
+      .timeline {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      .glass-card {
+        padding: 32px 20px;
+      }
+      .setup-guide-card {
+        padding: 32px 20px;
+      }
+      .brand-title {
+        font-size: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ambient-glow"></div>
+
+  <div class="download-container">
+    
+    <!-- Core Download Hero Card -->
+    <div class="glass-card">
+      <h1 class="brand-title">ERENIME</h1>
+      <div class="brand-tagline">Pure desktop anime experience</div>
+      
+      <p class="app-desc">
+        Say goodbye to browser overheads, intrusive ad redirects, and choppy framerates. Experience anime in a dedicated, high-performance desktop environment optimized for absolute speed and visual clarity.
+      </p>
+
+      <!-- Windows Download CTA (Leave href empty/blank link for now) -->
+      <a href="" class="download-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/>
+        </svg>
+        Download for Windows
+      </a>
+
+      <div class="download-meta">
+        Format: NSIS Setup (.exe) | Platform: Windows x64 | Size: ~80MB | Version: 1.0.0
+      </div>
+
+      <!-- Features breakdown grid inside download card -->
+      <div class="features-section">
+        <div class="feature-card">
+          <div class="feature-icon">📺</div>
+          <div class="feature-title">Immersive HTML5 Player</div>
+          <div class="feature-text">Custom controls, resolution switching, and hardware-accelerated ambient TV backlight glows.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <div class="feature-title">Consolidated Menubar</div>
+          <div class="feature-text">Draggable Discord-like integrated navigation with lightning-fast spotlight searches.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🍿</div>
+          <div class="feature-title">Binge-Ready Auto-Play</div>
+          <div class="feature-text">5-second animated countdown overlays to automatically queue and play the next episode.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎮</div>
+          <div class="feature-title">Pro Keyboard Shortcuts</div>
+          <div class="feature-text">Adjust speeds from 0.25x to 5.0x (+/- keys) and navigate history (Q/E keys) in milliseconds.</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Quick installation setup timeline guide card -->
+    <div class="setup-guide-card">
+      <div class="guide-title">How to Install</div>
+      
+      <div class="timeline">
+        <div class="step">
+          <span class="step-number">1</span>
+          <div class="step-title">Download</div>
+          <div class="step-desc">Grab the ERENIME Setup installer executable above.</div>
+        </div>
+        <div class="step">
+          <span class="step-number">2</span>
+          <div class="step-title">Install</div>
+          <div class="step-desc">Double-click the installer. Setup finishes in a few seconds.</div>
+        </div>
+        <div class="step">
+          <span class="step-number">3</span>
+          <div class="step-title">Stream</div>
+          <div class="step-desc">Launch the ERENIME shortcut from your desktop and binge!</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>
